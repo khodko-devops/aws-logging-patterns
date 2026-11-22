@@ -1,0 +1,11 @@
+services:
+  floci:
+    image: floci/floci@sha256:5ee85db604c4aa74ac76e07ea5cc83086f37bb472bf3dbb97e34019e48efae9c
+    ports:
+      - "127.0.0.1:${FLOCI_PORT:-4566}:4566"
+    healthcheck:
+      test: ["CMD", "/usr/local/bin/healthcheck.sh"]
+      interval: 5s
+      timeout: 3s
+      start_period: 10s
+      retries: 12
